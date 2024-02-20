@@ -1,0 +1,33 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "SimulatorApp",
+            "request": "launch",
+            "mainClass": "edu.ntnu.idatt2003.mvc.animals.view.SimulatorApp",
+            "projectName": "gui-l8"
+        },
+        {
+            "type": "java",
+            "name": "StudentView",
+            "request": "launch",
+            "mainClass": "edu.ntnu.idatt2003.mvc.students.view.StudentView",
+            "vmArgs": "--module-path /JavaFX/javafx-sdk-21.0.2/lib/ --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "MenuExample",
+            "request": "launch",
+            "mainClass": "edu.ntnu.idatt2003.mvc.menu.MenuExample",
+            "vmArgs": "--module-path /JavaFX/javafx-sdk-21.0.2/lib/ --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "ContactsApp",
+            "request": "launch",
+            "mainClass": "edu.ntnu.idatt2003.mvc.contacts.views.ContactsApp",
+            "vmArgs": "--module-path /JavaFX/javafx-sdk-21.0.2/lib/ --add-modules javafx.controls,javafx.fxml"
+        },
+    ]
+}

@@ -1,0 +1,12 @@
+@startuml
+class MenuExample {
+    -MenuController controller
+    -Text textCentre
+    +void start(Stage primaryStage)
+    +void stop()
+    +static void main(String[] args)
+    -MenuBar createMenus()
+    +void displayMessage(String message)
+}
+MenuExample --> "1" MenuController : uses
+@enduml
