@@ -1,5 +1,5 @@
 //https://www.tutorialspoint.com/javafx/javafx_event_handling.htm
-package edu.ntnu.idatt2003.event.keymouse.ex1;
+package edu.ntnu.idatt2003.event.keymouse;
 
 import javafx.animation.RotateTransition;
 import javafx.application.Application;

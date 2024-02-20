@@ -3,7 +3,7 @@
  * Run argument: --module-path "C:\git\javafx\javafx-sdk-11.0.2\lib" --add-modules javafx.controls,javafx.fxml
  */
 
-package edu.ntnu.idatt2003.event.button.multipleevents.ex2;
+package edu.ntnu.idatt2003.event.button.multipleevents;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -26,12 +26,12 @@ public class SimpleExampleButtonCaptureEventLambda extends Application {
     Button btn = new Button();
     btn.setText("Say 'Hello World'");
 
-    btn.setOnMouseClicked((MouseEvent event) -> System.out.println(
-        EVENT_TYPE_STR + event.getEventType() + ", " + event.getButton()));
-    btn.setOnMouseReleased((MouseEvent event) -> System.out.println(
-        EVENT_TYPE_STR + event.getEventType() + ", " + event.getButton()));
-    btn.setOnScroll((ScrollEvent event) -> System.out.println(
-        EVENT_TYPE_STR + event.getEventType() + ", " + event.getDeltaY()));
+    btn.setOnMouseClicked((MouseEvent e) -> System.out.println(
+        EVENT_TYPE_STR + e.getEventType() + ", " + e.getButton()));
+    btn.setOnMouseReleased((MouseEvent e) -> System.out.println(
+        EVENT_TYPE_STR + e.getEventType() + ", " + e.getButton()));
+    btn.setOnScroll((ScrollEvent e) -> System.out.println(
+        EVENT_TYPE_STR + e.getEventType() + ", " + e.getDeltaY()));
 
     StackPane root = new StackPane();
     root.getChildren().add(btn);

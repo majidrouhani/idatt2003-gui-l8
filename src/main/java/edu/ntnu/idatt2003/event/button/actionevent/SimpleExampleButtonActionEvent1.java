@@ -3,18 +3,17 @@
  * Run argument: --module-path "C:\git\javafx\javafx-sdk-11.0.2\lib" --add-modules javafx.controls,javafx.fxml
  */
 
-package edu.ntnu.idatt2003.event.button.multipleevents.ex1;
+package edu.ntnu.idatt2003.event.button.actionevent;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class SimpleExampleButtonCaptureEvent extends Application {
+public class SimpleExampleButtonActionEvent1 extends Application {
 
   public static void main(String[] args) {
     launch(args);
@@ -25,25 +24,17 @@ public class SimpleExampleButtonCaptureEvent extends Application {
     primaryStage.setTitle("My first stage with scene");
     Button btn = new Button();
     btn.setText("Say 'Hello World'");
+    btn.setId("btn1");
 
     
-    EventHandler<MouseEvent> mouseEventHandler = new EventHandler<>() {
+    EventHandler<ActionEvent> eventHandler = new EventHandler<>() {
       @Override
-      public void handle(MouseEvent event) {
-        System.out.println("Event type: " + event.getEventType()+", "+event.getButton());
-      }
-    };
-
-    EventHandler<ScrollEvent> scrollEventHandler = new EventHandler<>() {
-      @Override
-      public void handle(ScrollEvent event) {
-        System.out.println("Event type: " + event.getEventType()+", "+event.getDeltaY());
+      public void handle(ActionEvent e) {
+        System.out.println("Event type: " + e.getEventType()+", "+e.getTarget());
       }
     };
     
-    btn.setOnMouseClicked(mouseEventHandler);
-    btn.setOnMouseReleased(mouseEventHandler);
-    btn.setOnScroll(scrollEventHandler);
+    btn.setOnAction(eventHandler);
 
     StackPane root = new StackPane();
     root.getChildren().add(btn);
