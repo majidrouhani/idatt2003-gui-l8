@@ -1,7 +1,0 @@
-{
-    "java.configuration.updateBuildConfiguration": "interactive",
-    "java.debug.settings.onBuildFailureProceed": true,
-    "java.project.referencedLibraries": [
-        "/JavaFX/javafx-sdk-21.0.2/lib/*.jar"
-    ]
-}
