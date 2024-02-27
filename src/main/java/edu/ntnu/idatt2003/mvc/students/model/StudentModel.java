@@ -20,5 +20,4 @@ public class StudentModel {
     public List<Student> getStudents() {
         return students;
     }
-
 }
