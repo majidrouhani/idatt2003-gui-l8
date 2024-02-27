@@ -1,0 +1,29 @@
+@startuml
+class User {
+  -String name
+  +String getName()
+  +void setName(String)
+}
+
+class UserView {
+  +void printUserDetails(String)
+}
+
+class UserController {
+  -User model
+  -UserView view
+  +UserController(User, UserView)
+  +void setUserName(String)
+  +String getUserName()
+  +void updateView()
+}
+
+class MVCPatternDemo {
+  +static void main(String[])
+  -static User retriveUserFromDatabase()
+}
+
+User "1" -- "1" UserController : <<uses>>
+UserView "1" -- "1" UserController : <<uses>>
+UserController "1" -- "1" MVCPatternDemo : <<uses>>
+@enduml
