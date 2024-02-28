@@ -13,7 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class SimpleExampleButtonActionEvent2 extends Application implements EventHandler<ActionEvent> {
+public class ButtonActionEvent1 extends Application {
 
   public static void main(String[] args) {
     launch(args);
@@ -24,8 +24,17 @@ public class SimpleExampleButtonActionEvent2 extends Application implements Even
     primaryStage.setTitle("My first stage with scene");
     Button btn = new Button();
     btn.setText("Say 'Hello World'");
+    btn.setId("btn1");
 
-    btn.setOnAction(this);
+    
+    EventHandler<ActionEvent> eventHandler = new EventHandler<>() {
+      @Override
+      public void handle(ActionEvent e) {
+        showEventType(e);
+      }
+    };
+    
+    btn.setOnAction(eventHandler);
 
     StackPane root = new StackPane();
     root.getChildren().add(btn);
@@ -34,8 +43,7 @@ public class SimpleExampleButtonActionEvent2 extends Application implements Even
     primaryStage.show();
   }
 
-  @Override
-  public void handle(ActionEvent e) {
-    System.out.println("Event type: " + e.getEventType());
+  private void showEventType(ActionEvent e) {
+    System.out.println("Event type: " + e.getEventType()+", "+e.getTarget());
   }
 }

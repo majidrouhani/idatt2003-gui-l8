@@ -3,17 +3,19 @@
  * Run argument: --module-path "C:\git\javafx\javafx-sdk-11.0.2\lib" --add-modules javafx.controls,javafx.fxml
  */
 
-package edu.ntnu.idatt2003.event.button.actionevent;
+package edu.ntnu.idatt2003.event.button.multipleevents;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class SimpleExampleButtonActionEvent1 extends Application {
+public class ButtonCaptureEvent extends Application {
 
   public static void main(String[] args) {
     launch(args);
@@ -24,17 +26,25 @@ public class SimpleExampleButtonActionEvent1 extends Application {
     primaryStage.setTitle("My first stage with scene");
     Button btn = new Button();
     btn.setText("Say 'Hello World'");
-    btn.setId("btn1");
 
     
-    EventHandler<ActionEvent> eventHandler = new EventHandler<>() {
+    EventHandler<MouseEvent> mouseEventHandler = new EventHandler<>() {
       @Override
-      public void handle(ActionEvent e) {
-        System.out.println("Event type: " + e.getEventType()+", "+e.getTarget());
+      public void handle(MouseEvent e) {
+        showEventType(e);
+      }
+    };
+
+    EventHandler<ScrollEvent> scrollEventHandler = new EventHandler<>() {
+      @Override
+      public void handle(ScrollEvent e) {
+        showEventType(e);
       }
     };
     
-    btn.setOnAction(eventHandler);
+    btn.setOnMouseClicked(mouseEventHandler);
+    btn.setOnMouseReleased(mouseEventHandler);
+    btn.setOnScroll(scrollEventHandler);
 
     StackPane root = new StackPane();
     root.getChildren().add(btn);
@@ -42,4 +52,8 @@ public class SimpleExampleButtonActionEvent1 extends Application {
     primaryStage.setScene(new Scene(root, 300, 250));
     primaryStage.show();
   }
+
+ private void showEventType(Event e) {
+    System.out.println("Event type: " + e.getEventType()+", "+e.getTarget());
+  }  
 }
