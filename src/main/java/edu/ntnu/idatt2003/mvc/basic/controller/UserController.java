@@ -20,5 +20,4 @@ public class UserController {
     public void updateUser(User user){
         userModel.updateUser(user);
     }
-
 }
