@@ -33,15 +33,16 @@ public class SimulatorView extends JFrame
     // Color used for objects that have no defined color.
     private static final Color UNKNOWN_COLOR = Color.gray;
 
-    private final String STEP_PREFIX = "Step: ";
-    private final String POPULATION_PREFIX = "Population: ";
-    private JLabel stepLabel, population;
+    private static final String STEP_PREFIX = "Step: ";
+    private static final String POPULATION_PREFIX = "Population: ";
+    private JLabel stepLabel;
+    private JLabel population;
     private FieldView fieldView;
     
     // A map for storing colors for participants in the simulation
-    private Map<Class, Color> colors;
-    // A statistics object computing and storing simulation information
-    private FieldStats stats;
+    private Map<Class<?>, Color> colors;
+    // A transient statistics object computing and storing simulation information
+    private transient FieldStats stats;
 
     /**
      * Create a view of the given width and height.
@@ -51,7 +52,7 @@ public class SimulatorView extends JFrame
     public SimulatorView(int height, int width)
     {
         stats = new FieldStats();
-        colors = new LinkedHashMap<Class, Color>();
+        colors = new LinkedHashMap<>();
 
         setTitle("Fox and Rabbit Simulation");
         stepLabel = new JLabel(STEP_PREFIX, JLabel.CENTER);
@@ -74,7 +75,7 @@ public class SimulatorView extends JFrame
      * @param animalClass The animal's Class object.
      * @param color The color to be used for the given class.
      */
-    public void setColor(Class animalClass, Color color)
+public void setColor(Class<?> animalClass, Color color)
     {
         colors.put(animalClass, color);
     }
@@ -82,7 +83,7 @@ public class SimulatorView extends JFrame
     /**
      * @return The color to be used for a given class of animal.
      */
-    private Color getColor(Class animalClass)
+private Color getColor(Class<?> animalClass)
     {
         Color col = colors.get(animalClass);
         if(col == null) {
@@ -147,10 +148,12 @@ public class SimulatorView extends JFrame
      */
     private class FieldView extends JPanel
     {
-        private final int GRID_VIEW_SCALING_FACTOR = 6;
+        private static final int GRID_VIEW_SCALING_FACTOR = 6;
 
-        private int gridWidth, gridHeight;
-        private int xScale, yScale;
+        private int gridWidth;
+        private int gridHeight;
+        private int xScale;
+        private int yScale;
         Dimension size;
         private Graphics g;
         private Image fieldImage;

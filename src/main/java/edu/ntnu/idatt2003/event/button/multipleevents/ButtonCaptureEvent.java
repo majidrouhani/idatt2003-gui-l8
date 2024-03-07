@@ -5,6 +5,9 @@
 
 package edu.ntnu.idatt2003.event.button.multipleevents;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javafx.application.Application;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -16,6 +19,8 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class ButtonCaptureEvent extends Application {
+  static final String EVENT_TYPE_STR = "Event type: ";
+private static final Logger LOGGER = Logger.getLogger(ButtonCaptureEvent.class.getName());
 
   public static void main(String[] args) {
     launch(args);
@@ -31,14 +36,14 @@ public class ButtonCaptureEvent extends Application {
     EventHandler<MouseEvent> mouseEventHandler = new EventHandler<>() {
       @Override
       public void handle(MouseEvent e) {
-        showEventType(e);
+        logEventType(e);
       }
     };
 
     EventHandler<ScrollEvent> scrollEventHandler = new EventHandler<>() {
       @Override
       public void handle(ScrollEvent e) {
-        showEventType(e);
+        logEventType(e);
       }
     };
     
@@ -53,7 +58,8 @@ public class ButtonCaptureEvent extends Application {
     primaryStage.show();
   }
 
- private void showEventType(Event e) {
-    System.out.println("Event type: " + e.getEventType()+", "+e.getTarget());
-  }  
+ private void logEventType(Event e) {
+    String message = String.format("%s, %s, %s", EVENT_TYPE_STR, e.getEventType(), e.getTarget());
+    LOGGER.log(Level.INFO, message);
+  }    
 }

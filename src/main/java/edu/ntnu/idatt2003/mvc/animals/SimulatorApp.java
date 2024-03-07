@@ -1,4 +1,4 @@
-package edu.ntnu.idatt2003.mvc.animals.view;
+package edu.ntnu.idatt2003.mvc.animals;
 
 import edu.ntnu.idatt2003.mvc.animals.controller.Simulator;
 
